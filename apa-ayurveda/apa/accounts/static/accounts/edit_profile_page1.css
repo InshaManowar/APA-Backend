@@ -1,0 +1,136 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*:focus{
+  outline: none;
+}
+body{
+  background-color: #cfd0d1!important;
+}
+/* css class for the edit profile generated errors */
+.profilepress-edit-profile-status {
+  margin-top: 15%;
+  width: 400px;
+  text-align: center;
+  background-color: #e74c3c;
+  color: #ffffff;
+  border: medium none;
+  border-radius: 4px;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 1.4;
+  padding: 8px 5px;
+  box-shadow: -3px -3px 7px #201f1f73,
+              3px 3px 5px rgba(94,104,121,0.288);
+}
+
+
+
+.memo-edprofile-success {
+  width: 400px;
+  text-align: center;
+  background-color: #2ecc71;
+  color: #ffffff;
+  border: medium none;
+  border-radius: 4px;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 1.4;
+  padding: 8px 5px;
+  margin: auto;
+
+  box-shadow: -3px -3px 7px #27272773,
+              3px 3px 5px rgba(94,104,121,0.288);
+}
+
+#sc-edprofile {
+  background: #f0f0f0;
+  margin-top: 10% !important;
+
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 8px;
+  margin-bottom: 2%;
+  transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+  box-shadow: -3px -3px 7px #1d1c1c73,
+              3px 3px 5px rgba(94,104,121,0.288);
+}
+
+#sc-edprofile h1 {
+  background: #3399cc;
+  padding: 20px 0;
+  font-size: 140%;
+  font-weight: 300;
+  text-align: center;
+  color: #fff;
+  box-shadow: -3px -3px 7px #66656573,
+              3px 3px 5px rgba(94,104,121,0.288);
+}
+
+div#sc-edprofile .sc-container {
+  background: #f0f0f0;
+  padding: 6% 4%;
+  box-shadow: -3px -3px 7px #ffffff73,
+              3px 3px 5px rgba(94,104,121,0.288);
+}
+
+div#sc-edprofile input[type="email"]:focus,
+div#sc-edprofile input[type="text"]:focus,
+div#sc-edprofile input[type="password"]:focus, div#sc-edprofile select, div#sc-edprofile textarea {
+    border-bottom: 2px solid #114e77;
+    border-bottom-right-radius: 20px;
+    color: #3498db;
+    transition: 0.2 ease;
+}
+div#sc-edprofile input[type="email"],
+div#sc-edprofile input[type="text"],
+div#sc-edprofile input[type="password"], div#sc-edprofile select, div#sc-edprofile textarea {
+  width: 92%;
+  background: #fff;
+  margin-bottom: 4%;
+  border: 1px solid #ccc;
+  padding: 1%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 95%;
+  color: #555;
+  box-shadow: -3px -3px 7px #ffffff73,
+              3px 3px 5px rgba(94,104,121,0.288);
+
+}
+
+div#sc-edprofile select {
+  width: 100%;
+  box-shadow: -3px -3px 7px #ffffff73,
+              3px 3px 5px rgba(94,104,121,0.288);
+}
+
+div#sc-edprofile textarea {
+  height: 100px;
+  box-shadow: -3px -3px 7px #ffffff73,
+              3px 3px 5px rgba(94,104,121,0.288);
+}
+
+div#sc-edprofile input[type="submit"] {
+  border: 1px solid #3498db;
+  background-color: black;
+  color: #fff;
+  height: 30px;
+  width: 100px;
+  border-radius: 5px;
+  margin: 0px;
+  transition: all 0.3s;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+}
+
+div#sc-edprofile input[type="submit"]:hover {
+  background: #054363;
+  transform: scale(1.1);
+
+}

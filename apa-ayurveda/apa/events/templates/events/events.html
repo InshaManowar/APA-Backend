@@ -1,0 +1,98 @@
+{% extends 'events/base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'events/event.css' %}">
+
+{% endblock %}
+{% block content %}
+
+<!-- 
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-8 mb-4  mt-3 left  top">
+  
+        <h1>{% block title %} {{ event.title }} {% endblock title %}</h1>
+        <p class=" text-muted">{{ event.location }} | {{ event.startdate }}</p>
+        <p class="text">{{ event.content | safe }}</p>
+       
+       {% for p in photos %}
+                  
+        <img src="{{ p.images.url }}" alt="event" class="card-image">
+
+       {% endfor %}
+      </div>
+  </div>
+</div> -->
+<header class="header">
+  <div class="text-box">
+    <h1 class="heading-primary">
+      <span class="heading-primary-main"> {{ event.title }} </span>
+    </h1>
+    <!-- <a href="#" class="btn btn-white btn-animated">SCROLL DOWN</a> -->
+  </div>
+  <div class="box">
+    <span></span>
+    <span></span>
+    <span></span>
+    </div>
+</header>
+
+<div class="container apa-event-description" style="margin-top: 5%;">
+
+ <h3 >{{ event.subtitle }}</h3>
+ <p> {{ event.content | slice:":300" }}... </p>
+       
+
+     <div class="container apa-event-images text-center">
+      {% for p in photos %}
+                  
+      <img src="{{ p.images.url }}" alt="{{ event.title }}" class="card-image">
+
+     {% endfor %}
+
+     </div>
+     <p> ...{{ event.content | slice:"301:" }} </p>
+
+</div>
+
+<div class="container col-lg-8 col-md-10 mt-5" style="margin-bottom: 5%;">
+<table class="table table-striped">
+  <thead>
+      <tr class="apa-events-table-header">
+        <th scope="col"> </th>
+        <th scope="col">Time (IST) </th>
+        <th scope="col">Event Details</th>
+       </tr>
+  </thead>
+  <tbody>
+    
+    {% for t in table %}
+
+    <tr>
+      <th scope="row"></th>
+      
+      
+
+
+     <td> {{ t.start_date_for_day }} - {{ t.end_date_for_day }} </td>
+     <td>
+         <ul type="disc">
+           <h3>{{ t.title_for_day }}</h3>
+            {{ t.description_for_day }}
+         </ul>
+     </td>
+
+    
+       
+    </tr>
+  
+      
+    {% endfor %}
+      
+  </tbody>
+</table>
+</div>
+
+{% endblock content %}
+

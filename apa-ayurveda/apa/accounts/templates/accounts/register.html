@@ -1,0 +1,135 @@
+{% extends 'accounts/base.html' %}
+
+
+{% block content %}
+
+
+<style type="text/css">
+  .form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  }
+
+  .form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+  .form-signin input[type="email"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="text"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="password"] {
+    margin-bottom: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .h3{
+    text-align: center;
+  }
+
+</style>
+
+
+<form class="form-signin" method="post" style="margin-top: 5%;" enctype="multipart/form-data">{% csrf_token %}
+
+  <h1 class="h3 mb-3 font-weight-normal">Register an account</h1>
+
+  <input type="email" method="POST" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+  
+  <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required>
+  <input type="text" name="first_name" id="inputFirsstname" class="form-control" placeholder="First name" required>
+  <input type="text" name="last_name" id="inputLastname" class="form-control" placeholder="Last name" required>
+  <input type="text" name="designation" id="inputDesignation" class="form-control" placeholder="designation" required>
+  <input type="text" name="phone" id="inputPhone" class="form-control" placeholder="mobile number" required>
+  <input type="text" name="address" id="inputAddress" class="form-control" placeholder="address" required>
+  <input type="text" name="qualification" id="inputQualification" class="form-control" placeholder="your qualifications" required>
+  <input type="password" name="password1" id="inputPassword1" class="form-control" placeholder="Password" required>
+  <input type="password" name="password2" id="inputPassword2" class="form-control" placeholder="Confirm password" required>
+  <p> Upload profile image </p>
+  <input id="id_image" type="file" class="form-control" name="profile_image">
+
+ 
+  
+  {% for field in registration_form %}
+      <p>
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+  {% endfor %}
+  {% if registration_form.non_field_errors %}
+    <div style="color: red">
+      <p>{{registration_form.non_field_errors}}</p>
+    </div>
+      
+
+
+      
+  {% endif %}
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+
+</form>
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+<div id="sc-edprofile"style="margin-top: 10%;">
+  <h1>Edit Profile Form</h1>
+  <form class="sc-container" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required value="{{account_form.initial.username}}">
+    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus value='{{account_form.initial.email}}'>
+    <input type="text" name="first_name" id="inputFirstname" class="form-control" placeholder="Your First Name"  value="{{account_form.initial.first_name}}">
+    <input type="text" name="last_name" id="inputLastname" class="form-control" placeholder="Your Last Name" value="{{ account_form.initial.last_name }}">
+    <input type="text" name="phone" id="inputPhone" class="form-control" placeholder="mobile number" required value="{{account_form.initial.last_name}}">
+    <input type="text" name="designation" id="inputDesignation" class="form-control" placeholder="Designation" required value="{{account_form.initial.designation}}">
+    <input type="text" name="qualification" id="inputQualification" class="form-control" placeholder="Qualification" required value="{{account_form.initial.qualification}}">
+    <input type="text" name="address" id="inputAddress" class="form-control" placeholder="your clinic address" required value="{{account_form.initial.address}}">
+    <input type="file" name="profile_image" id="inputProfileImage" class="form-control" placeholder="Profile photo" value= '{{account_form.initial.profile_image.url}}'>
+
+    {% for field in account_form %}
+    <p>
+      {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+      {% endfor %}
+    </p>
+{% endfor %}
+{% if account_form.non_field_errors %}
+  <div style="color: red">
+    <p>{{account_form.non_field_errors}}</p>
+  </div>
+    
+{% endif %}
+
+{% if success_message %}
+  <p style="color:green; text-align: center;">{{success_message}}</p>
+{% endif  %}
+
+<button class="btn btn-lg btn-primary btn-block" type="submit"> Save changes </button>
+
+  </form>
+
+</div>

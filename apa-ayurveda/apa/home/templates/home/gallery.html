@@ -1,0 +1,58 @@
+{% extends 'home/base.html' %} {% load static %} {% block head %}
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+/>
+<title>Our Gallery</title>
+
+{% endblock %} {% block content %}
+
+<div class="container  gallery-container">
+  <h1>Gallery</h1>
+  <div class="tz-gallery">
+
+
+    <div class="row">
+      {% for p in photos %}
+
+      <div class="col-sm-6 col-md-4">
+        <a class="lightbox" href="{{ p.images.url }}">
+          <img src="{{ p.images.url }}" />
+        </a>
+      </div>
+
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+{% if image_list.has_other_pages %}
+  <nav aria-label="Page navigation conatiner"></nav>
+  <ul class="pagination justify-content-center">
+    {% if image_list.has_previous %}
+    <li><a href="?page={{ image_list.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+    {% endif %}
+    {% if image_list.has_next %}
+    <li><a href="?page={{ image_list.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+   {% endif %}
+  </ul>
+  </nav>
+</div>
+{% endif %}
+
+
+
+
+  
+{% endblock %}
+{% block scripts %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script type="text/javascript">
+  baguetteBox.run('.tz-gallery');
+</script>
+  
+{% endblock scripts %}

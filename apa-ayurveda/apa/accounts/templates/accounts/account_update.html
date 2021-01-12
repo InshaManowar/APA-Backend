@@ -1,0 +1,51 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/edit_profile_page1.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div id="sc-edprofile"style="margin-top: 10%;">
+  <h1>Edit Profile Form</h1>
+  <form class="sc-container" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required value="{{account_form.initial.username}}">
+    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus value='{{account_form.initial.email}}'>
+    <input type="text" name="first_name" id="inputFirstname" class="form-control" placeholder="Your First Name"  value="{{account_form.initial.first_name}}">
+    <input type="text" name="last_name" id="inputLastname" class="form-control" placeholder="Your Last Name" value="{{ account_form.initial.last_name }}">
+    <input type="text" name="phone" id="inputPhone" class="form-control" placeholder="mobile number" required value="{{account_form.initial.phone}}">
+    <input type="text" name="designation" id="inputDesignation" class="form-control" placeholder="Designation" required value="{{account_form.initial.designation}}">
+    <input type="text" name="qualification" id="inputQualification" class="form-control" placeholder="Qualification" required value="{{account_form.initial.qualification}}">
+    <input type="text" name="address" id="inputAddress" class="form-control" placeholder="your clinic address" required value="{{account_form.initial.address}}">
+    <input type="file" name="profile_image" id="inputProfileImage" class="form-control" placeholder="Profile photo" value= '{{account_form.initial.profile_image.url}}'>
+
+    {% for field in account_form %}
+    <p>
+      {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+      {% endfor %}
+    </p>
+{% endfor %}
+{% if account_form.non_field_errors %}
+  <div style="color: red">
+    <p>{{account_form.non_field_errors}}</p>
+  </div>
+    
+{% endif %}
+
+{% if success_message %}
+  <p style="color:green; text-align: center;">{{success_message}}</p>
+{% endif  %}
+
+<button class="btn btn-lg btn-primary btn-block" type="submit"> Save changes </button>
+
+  </form>
+
+</div>
+{% endblock content %}
+    

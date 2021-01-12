@@ -1,0 +1,20 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+{% block head %}
+  
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container logout-wrap text-center" style="margin-top: 15%; margin-bottom: 20%;" >
+    <h1 style="color: black !important;">You have logged out of your account</h1>
+
+    <a href="{% url 'login' %}"> Login Again </a>
+    <hr>
+    <a href="{% url 'home:home' %}"> Take me to home page </a>
+
+</div>
+    
+{% endblock content %}
+    

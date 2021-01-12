@@ -1,0 +1,62 @@
+{% extends 'events/base.html' %} 
+
+{% block head %}
+
+<title>Ayurved Proctology Association | Events</title>
+
+{% endblock %} 
+
+{% block content %}
+<body class="apa-event-index">
+    
+<h1 style="margin-top: 10% !important;" class="sub-title text-center my-3" data-aos="zoom-out" data-aos-duration="1000">
+    Our Events
+  </h1>
+  <p class="lead text-center"data-aos="fade-zoom-in" data-aos-duration="1200">This is an introductory sentence. <a href="events.html">See more events</a></p>
+<div class="team-boxed event-page-box">
+
+
+    <div class="container">
+        <div class="row people">
+          
+            {% for event in event_list %}
+
+         
+         
+            <div class="col-md-6 col-lg-4 item"data-aos="fade-up" data-aos-duration="500" data-aos-delay="800">
+              <div class="box">
+                <h3 class="name sub-title">{{ event.title }}</h3>
+                <span class="sub-text title">{{ event.location }} </span>
+                <div class="sub-text sub-title">{{ event.startdate}} - {{ event.enddate }}</div>
+
+                <p class="description">{{ event.content|slice:":200" }} ... </p>
+                <div class="social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    <a class="apa-btn-ripple sub-title" href="{% url 'event:details' event.slug  %}">Read more</a>
+
+              </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+<div class="pagination">
+  <span class="step-links">
+      {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
+</div>
+</body>
+{%endblock%}

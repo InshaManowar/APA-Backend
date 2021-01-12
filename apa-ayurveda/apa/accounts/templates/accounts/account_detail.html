@@ -1,0 +1,23 @@
+{% extends 'accounts/base.html' %}
+
+
+{% block content %}
+
+
+<div class="">
+  <div class="row ">
+  
+        <h1>{% block title %} {{ account.username }} {% endblock title %}</h1>
+        <p class=" text-muted">{{ account.email }} | {{ account.designation }}</p>
+        <p class="text">{{ account.address | safe }}</p>
+        {% for p in images %}
+                  
+        <img src="{{ p.images.url }}" alt="{{account.first_name}}" class="card-image">
+
+       {% endfor %} 
+  </div>
+</div>
+
+
+{% endblock content %}
+

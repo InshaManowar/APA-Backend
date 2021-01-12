@@ -1,0 +1,46 @@
+{% extends 'home/base.html' %} 
+{% load static %}
+{% load blog_tags %}
+{% block head %}
+
+<title>Event Videos</title>
+
+{% endblock %} 
+
+
+{% block content %}
+
+<div class="container wrap-main" style="margin-top: 10%;">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="video-box">
+            
+            {% for v in video %}
+
+            <iframe width="350" height="255" src="{{ v.display }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                
+            {% endfor %}
+                        
+        </div>
+      </div>
+
+<!-- latest video sidebar start -->
+
+      <div class="col-lg-4">
+        <div class="video-side-box">
+          {% for videos in video_side %}
+          <iframe width="100" height="100"  src="{{ videos.display_sidebar }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <span class="video-side-text">
+            This is a subtitle
+          </span>
+          <hr>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+{% endblock content %}
